@@ -1,0 +1,79 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, h3, textarea,
+span, article, footer, time, small, h4 {
+  color: inherit;
+  text-transform: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  letter-spacing: 0;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: rgba(0,0,0,.8);
+  font-size: 18px;
+  line-height: 1.4;
+  overflow-x: hidden;
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+}
+
+img {
+  width: 18px;
+  height: 18px;
+  padding: 6px;
+}
+
+.dialog-table {
+  width: 480px;
+  padding: 0 24px;
+}
+
+.dialog-row {
+  color: #4a4a4a;
+  border-radius: 3px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #c4c4c4;
+  cursor: pointer;
+  margin: 0 auto;
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.dialog-row:last-child {
+  border-bottom: none;
+}
+
+button {
+  display: inline-block;
+  vertical-align: top;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+  margin: 0 16px 0 0;
+}
