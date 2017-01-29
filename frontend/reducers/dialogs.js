@@ -1,9 +1,10 @@
 import { CREATE_DIALOG, EDIT_DIALOG, DELETE_DIALOG } from '../actions/dialogs';
 import { merge } from 'lodash';
 
-const dialogs = (state = {}, action) => {
-  switch(action) {
+const dialogs = (state = [], action) => {
+  switch(action.type) {
     case CREATE_DIALOG:
+      return [...state, action.dialog];
     case EDIT_DIALOG:
     case DELETE_DIALOG:
     default:
@@ -12,14 +13,3 @@ const dialogs = (state = {}, action) => {
 };
 
 export default dialogs;
-
-// dialogs = {
-//   1: {
-//     content:
-//     order:
-//   }
-//   2: {
-//     content:
-//     order:
-//   }
-// }

@@ -1,20 +1,9 @@
-// export const POST_FILE = "POST_FILE";
-// export const RECEIVE_FILE = "RECEIVE_FILE";
-//
-// export const createFile = file => ({
-//   type: POST_FILE,
-//   file
-// });
-//
-// export const receiveFile = file => ({
-//   type: RECIEVE_FILE,
-//   file
-// });
-
+// type constants
 export const CREATE_DIALOG = "CREATE_DIALOG";
 export const EDIT_DIALOG = "EDIT DIALOG";
 export const DELETE_DIALOG = "DELETE DIALOG";
 
+// action creators
 export const createDialog = dialog => ({
   type: CREATE_DIALOG,
   dialog

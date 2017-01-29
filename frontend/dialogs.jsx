@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import Modal from 'react-modal';
 import configureStore from './store';
 import DialogsContainer from './components/dialogs/container.js';
 
@@ -21,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const store = configureStore(preloadedState);
+  const appElement = document.getElementById('index');
+  Modal.setAppElement(appElement);
+  ReactDOM.render(<App store={store} />, appElement);
+  
   window.store = store; // TODO
-  ReactDOM.render(<App store={store} />, document.getElementById('index'));
 });

@@ -4,7 +4,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      content: ''
+      dialog: this.props.dialog || ''
     });
 
     this.handleInput = this.handleInput.bind(this);
@@ -12,29 +12,20 @@ class Form extends React.Component {
   }
 
   handleInput(key) {
-    return value => (
-      this.setState({
-        [key]: value
-      })
-    )
+    return e => this.setState({[key]: e.currentTarget.value});
   }
 
   handleSubmit() {
-    this.props.createFile(this.state);
+    this.props.handleSubmit(this.state.dialog);
   }
 
   render() {
     return (
       <form>
         <label>
-          Name
-          <input onChange={this.handleInput('name')} />
+          <input onChange={this.handleInput('dialog')} />
         </label>
-        <label>
-          Text
-          <input onChange={this.handleInput('text')} />
-        </label>
-        <button onClick={this.handleSubmit}>Upload File</button>
+        <button onClick={this.handleSubmit}>{this.props.btnText}</button>
       </form>
     )
   }
