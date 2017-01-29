@@ -14,17 +14,15 @@ const App = ({ store }) => (
 
 document.addEventListener('DOMContentLoaded', () => {
   const preloadedState = { // dummy files for testing
-    "dialogs": [
-      "hey",
-      "what's up",
-      "hello"
-    ]
+    dialogs: {
+      index: ['hey', 'whats up', 'hello']
+    }
   }
 
   const store = configureStore(preloadedState);
   const appElement = document.getElementById('index');
   Modal.setAppElement(appElement);
   ReactDOM.render(<App store={store} />, appElement);
-  
+
   window.store = store; // TODO
 });
