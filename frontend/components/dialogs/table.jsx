@@ -9,17 +9,17 @@ export default (props) => (
         <Row
           key={idx}
           dialog={dialog}
-          handleEdit={() => props.openModal('edit', dialog)}
-          handleDelete={() => props.deleteDialog(dialog)} />
+          handleEdit={() => props.openModal(props.editDialog(idx), 'edit', dialog)}
+          handleDelete={() => props.deleteDialog(idx)} />
       ))}
     </div>
-    <button onClick={() => props.openModal('add')}>Add</button>
+    <button onClick={() => props.openModal(props.createDialog, 'add')}>Add</button>
     <Modal
       modalIsOpen={props.modalIsOpen}
       closeModal={props.closeModal}
-      handleSubmit={props.handleSubmit}
-      formType={props.formType}
-      formInput={props.formInput}
+      handleSubmit={props.modalHandleSubmit}
+      formType={props.modalFormType}
+      formInput={props.modalFormInput}
     />
   </section>
 );

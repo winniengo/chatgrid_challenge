@@ -11,18 +11,20 @@ export const createDialog = dialog => ({
   dialog
 });
 
-export const editDialog = dialog => ({
+export const editDialog = (dialog, idx) => ({
   type: EDIT_DIALOG,
-  dialog
+  dialog,
+  idx
 });
 
-export const deleteDialog = id => ({
+export const deleteDialog = idx => ({
   type: DELETE_DIALOG,
-  id
+  idx
 });
 
-export const openModal = (formType, formInput) => ({
+export const openModal = (handleSubmit, formType, formInput) => ({
   type: OPEN_MODAL,
+  handleSubmit,
   formType,
   formInput
 });

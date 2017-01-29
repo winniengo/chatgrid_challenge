@@ -23,7 +23,6 @@ class Form extends React.Component {
   }
 
   render() {
-    console.log(this.state.formInput);
     return (
       <form>
         <label>
