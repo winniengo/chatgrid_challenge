@@ -1,16 +1,18 @@
 import React from 'react';
 import Modal from './modal';
-import Row from './row';
+import TableRow from './table_row';
 
 export default (props) => (
   <section>
     <div className='dialog-table'>
       {props.index.map((dialog, idx) => (
-        <Row
+        <TableRow
           key={idx}
+          idx={idx}
           dialog={dialog}
-          handleEdit={() => props.openModal(props.editDialog(idx), 'edit', dialog)}
-          handleDelete={() => props.deleteDialog(idx)} />
+          openModal={props.openModal}
+          editDialog={props.editDialog}
+          deleteDialog={props.deleteDialog} />
       ))}
     </div>
     <button onClick={() => props.openModal(props.createDialog, 'add')}>Add</button>
