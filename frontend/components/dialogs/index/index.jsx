@@ -5,10 +5,6 @@ import update from 'react/lib/update';
 
 import IndexItem from './index_item.jsx';
 
-const style = {
-  width: 400,
-};
-
 class DialogIndex extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +44,7 @@ class DialogIndex extends Component {
     const { openModal, editDialog, deleteDialog, moveDialog } = this.props;
 
     return (
-      <div style={style}>
+      <div className='dialog-index'>
         {this.state.items.map(({ id, dialog }, idx) => (
           <IndexItem
             key={id}

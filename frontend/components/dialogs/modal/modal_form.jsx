@@ -15,17 +15,23 @@ const customStyles = {
 
 export default ({ isOpen, handleSubmit, formType, formInput, openModal, closeModal, createDialog }) => (
   <section>
-    <button onClick={() => openModal(createDialog, 'add')}>Add</button>
+    <img
+      src='https://res.cloudinary.com/dbgp4ftst/image/upload/v1485806236/add_ywlozp.png'
+      onClick={() => openModal(createDialog, 'add')} />
     <ReactModal
       isOpen={isOpen}
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel="" >
-      <button onClick={closeModal}>close</button>
-      <Form
-        handleSubmit={handleSubmit}
-        formType={formType}
-        formInput={formInput} />
+      <div className='dialog-modal-form'>
+        <img
+          src='https://res.cloudinary.com/dbgp4ftst/image/upload/v1485806342/close_xzmwii.png'
+          onClick={closeModal} />
+        <Form
+          handleSubmit={handleSubmit}
+          formType={formType}
+          formInput={formInput} />
+      </div>
     </ReactModal>
   </section>
 );

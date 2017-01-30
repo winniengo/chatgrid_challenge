@@ -1,4 +1,4 @@
-/*html, body, header, nav, h1, a,
+html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
 fieldset, label, input, h3, textarea,
@@ -30,10 +30,8 @@ body {
   font-style: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  color: rgba(0,0,0,.8);
-  font-size: 18px;
+  font-size: 12px;
   line-height: 1.4;
-  overflow-x: hidden;
   display: block;
   font-family: 'Open Sans', sans-serif;
 }
@@ -44,36 +42,68 @@ img {
   padding: 6px;
 }
 
-.dialog-table {
-  width: 480px;
-  padding: 0 24px;
+img:hover {
+  border-radius: 20px;
+  background: #caebf2;
 }
 
-.dialog-row {
-  color: #4a4a4a;
-  border-radius: 3px;
+.app {
+  width: 400px;
+  padding: 12px;
+}
+
+.dialog-index {
+}
+
+.dialog-item {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #c4c4c4;
-  cursor: pointer;
-  margin: 0 auto;
-  text-align: left;
-  overflow: hidden;
-  position: relative;
-  transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
 }
 
-.dialog-row:last-child {
-  border-bottom: none;
+.dialog-item img {
+  margin-right: 6px;
 }
 
-button {
-  display: inline-block;
-  vertical-align: top;
-  opacity: 1;
-  transition: opacity 0.2s ease-in-out;
+.dialog-item img:last-child {
+  margin-right: 0;
+}
+
+.dialog-modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  margin-top: 10px;
+}
+
+input[type=text] {
+  padding: 6px;
+  border: 2px solid #c4c4c4;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  width: 200px;
+}
+
+input[type=text]:focus {
+    border-color:#333;
+}
+
+input[type=submit] {
+  padding: 6px;
+  background: #c4c4c4;
+  border: 0 none;
   cursor: pointer;
-  margin: 0 16px 0 0;
-}*/
+  -webkit-border-radius: 5px;
+  border-radius: 3px;
+  text-align: center;
+  width: 100px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

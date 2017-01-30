@@ -6,10 +6,11 @@ import { ItemTypes } from '../../../constants/dialogs';
 import Item from './item';
 
 const style = {
-  border: '1px dashed gray',
-  padding: '0.5rem 1rem',
-  marginBottom: '.5rem',
-  backgroundColor: 'white',
+  border: '2px solid #c4c4c4',
+  borderRadius: '3px',
+  padding: '10px',
+  marginBottom: '10px',
+  'backgroundColor': 'white',
   cursor: 'move',
 };
 

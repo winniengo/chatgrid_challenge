@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default ({ dialog, handleEdit, handleDelete }) => (
-  <div className='dialog-row'>
+  <div className='dialog-item'>
     <span>{dialog}</span>
     <section>
       <img

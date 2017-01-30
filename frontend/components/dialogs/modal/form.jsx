@@ -27,6 +27,7 @@ class Form extends React.Component {
       <form>
         <label>
           <input
+            type='text'
             onChange={this.handleInput}
             value={this.state.formInput} />
         </label>

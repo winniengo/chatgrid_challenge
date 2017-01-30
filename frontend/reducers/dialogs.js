@@ -35,7 +35,6 @@ const modal = (state = defaultState, action) => {
 
 const index = (state = [], action) => {
   let nextState;
-  console.log(action);
   switch(action.type) {
     case CREATE_DIALOG:
       nextState = state.slice(0);

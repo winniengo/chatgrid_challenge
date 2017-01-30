@@ -3,8 +3,8 @@ import DialogModalContainer from './dialogs/modal/container';
 import DialogIndexContainer from './dialogs/index/container';
 
 export default () => (
-  <section>
+  <div className='app'>
     <DialogIndexContainer />
     <DialogModalContainer />
-  </section>
+  </div>
 );
