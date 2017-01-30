@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Modal from 'react-modal';
 import configureStore from './store';
-import DialogsContainer from './components/dialogs/container.js';
+import App from './components/app';
 
-
-const App = ({ store }) => (
+const Root = ({ store }) => (
   <Provider store={store}>
-    <DialogsContainer />
+    <App />
   </Provider>
 );
 
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore(preloadedState);
   const appElement = document.getElementById('index');
   Modal.setAppElement(appElement);
-  ReactDOM.render(<App store={store} />, appElement);
+  ReactDOM.render(<Root store={store} />, appElement);
 
   window.store = store; // TODO
 });

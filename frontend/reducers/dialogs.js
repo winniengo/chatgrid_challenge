@@ -1,4 +1,10 @@
-import { CREATE_DIALOG, EDIT_DIALOG, DELETE_DIALOG, MOVE_DIALOG, OPEN_MODAL, CLOSE_MODAL } from '../actions/dialogs';
+import {
+  CREATE_DIALOG,
+  EDIT_DIALOG,
+  DELETE_DIALOG,
+  MOVE_DIALOG,
+  OPEN_MODAL,
+  CLOSE_MODAL } from '../constants/dialogs';
 import update from 'react/lib/update';
 import { merge, take, drop } from 'lodash';
 

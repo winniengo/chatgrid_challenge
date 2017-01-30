@@ -1,10 +1,11 @@
 // type constants
-export const CREATE_DIALOG = "CREATE_DIALOG";
-export const EDIT_DIALOG = "EDIT DIALOG";
-export const DELETE_DIALOG = "DELETE DIALOG";
-export const MOVE_DIALOG = "MOVE_DIALOG";
-export const OPEN_MODAL = "OPEN_MODAL";
-export const CLOSE_MODAL = "CLOSE_MODAL";
+import {
+  CREATE_DIALOG,
+  EDIT_DIALOG,
+  DELETE_DIALOG,
+  MOVE_DIALOG,
+  OPEN_MODAL,
+  CLOSE_MODAL } from '../constants/dialogs';
 
 // action creators
 export const createDialog = dialog => ({

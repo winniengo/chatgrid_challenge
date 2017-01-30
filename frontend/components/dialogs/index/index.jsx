@@ -2,40 +2,39 @@ import React, { Component } from 'react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import update from 'react/lib/update';
-import Modal from './modal';
 
-import TableRow from './table_row.jsx';
+import IndexItem from './index_item.jsx';
 
 const style = {
   width: 400,
 };
 
-class Table extends Component {
+class DialogIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rows: this.props.index.map((dialog, id) => ({ dialog, id })),
+      items: this.props.index.map((dialog, id) => ({ dialog, id })),
       fromIndex: null
     };
 
-    this.swapRows = this.swapRows.bind(this);
+    this.swapIndexItems = this.swapIndexItems.bind(this);
     this.updateFromIndex = this.updateFromIndex.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      rows: nextProps.index.map((dialog, id) => ({ dialog, id }))
+      items: nextProps.index.map((dialog, id) => ({ dialog, id }))
     });
   }
 
-  swapRows(fromIndex, toIndex) {
-    const draggedRow = this.state.rows[fromIndex];
+  swapIndexItems(fromIndex, toIndex) {
+    const draggedIndexItem = this.state.items[fromIndex];
 
     this.setState(update(this.state, {
-      rows: {
+      items: {
         $splice: [
           [fromIndex, 1],
-          [toIndex, 0, draggedRow],
+          [toIndex, 0, draggedIndexItem],
         ],
       },
     }));
@@ -46,18 +45,18 @@ class Table extends Component {
   }
 
   render() {
-    const { openModal, createDialog, editDialog, deleteDialog, moveDialog } = this.props;
+    const { openModal, editDialog, deleteDialog, moveDialog } = this.props;
 
     return (
       <div style={style}>
-        {this.state.rows.map(({ id, dialog}, idx) => (
-          <TableRow
+        {this.state.items.map(({ id, dialog }, idx) => (
+          <IndexItem
             key={id}
             id={id}
             index={idx}
             dialog={dialog}
             fromIndex={this.state.fromIndex}
-            swapRows={this.swapRows}
+            swapIndexItems={this.swapIndexItems}
             updateFromIndex={this.updateFromIndex}
             openModal={openModal}
             editDialog={editDialog}
@@ -65,17 +64,9 @@ class Table extends Component {
             moveDialog={moveDialog}
           />
         ))}
-        <button onClick={() => openModal(createDialog, 'add')}>Add</button>
-        <Modal
-          modalIsOpen={this.props.modalIsOpen}
-          closeModal={this.props.closeModal}
-          handleSubmit={this.props.modalHandleSubmit}
-          formType={this.props.modalFormType}
-          formInput={this.props.modalFormInput}
-        />
       </div>
     );
   }
 }
 
-export default DragDropContext(HTML5Backend)(Table);
+export default DragDropContext(HTML5Backend)(DialogIndex);

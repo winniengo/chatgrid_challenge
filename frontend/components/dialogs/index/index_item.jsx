@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import { merge } from 'lodash';
-import Row from './row';
+import { ItemTypes } from '../../../constants/dialogs';
+import Item from './item';
 
 const style = {
   border: '1px dashed gray',
@@ -12,7 +13,7 @@ const style = {
   cursor: 'move',
 };
 
-const cardSource = {
+const indexItemSource = {
   beginDrag(props) {
     props.updateFromIndex(props.index);
 
@@ -23,9 +24,7 @@ const cardSource = {
   },
 
   endDrag(props, monitor) {
-    if (monitor.didDrop()) { // drop was handled by a compatible drop target
-      props.moveDialog(props.fromIndex, props.index); // update store
-    }
+    props.moveDialog(props.fromIndex, props.index); // update store
   }
 };
 
@@ -34,7 +33,7 @@ const collectSource = (connect, monitor) => ({
   isDragging: monitor.isDragging(),
 });
 
-const cardTarget = {
+const indexItemTarget = {
   hover(props, monitor, component) {
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.index;
@@ -64,7 +63,7 @@ const cardTarget = {
       return; // when dragging upwards, only move when the cursor is above 50%
     }
 
-    props.swapRows(dragIndex, hoverIndex); // update table state
+    props.swapIndexItems(dragIndex, hoverIndex); // update table state
 
     monitor.getItem().index = hoverIndex;
   },
@@ -74,7 +73,7 @@ const collectTarget = connect => ({
   connectDropTarget: connect.dropTarget(),
 });
 
-class TableRow extends Component {
+class IndexItem extends Component {
   render() {
     const {
       index,
@@ -94,7 +93,7 @@ class TableRow extends Component {
 
     return connectDropTarget(connectDragSource(
       <div style={merge({}, style, {opacity})}>
-        <Row
+        <Item
           dialog={dialog}
           handleEdit={handleEdit}
           handleDelete={handleDelete} />
@@ -103,7 +102,7 @@ class TableRow extends Component {
   }
 };
 
-const DraggableTableRow = DragSource('card', cardSource, collectSource)(TableRow);
-const DroppableDraggableTableRow = DropTarget('card', cardTarget, collectTarget)(DraggableTableRow);
+const DraggableIndexItem = DragSource(ItemTypes.INDEX_ITEM, indexItemSource, collectSource)(IndexItem);
+const DroppableDraggableIndexItem = DropTarget(ItemTypes.INDEX_ITEM, indexItemTarget, collectTarget)(DraggableIndexItem);
 
-export default DroppableDraggableTableRow;
+export default DroppableDraggableIndexItem;
