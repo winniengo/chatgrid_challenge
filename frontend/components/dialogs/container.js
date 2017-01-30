@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createDialog, editDialog, deleteDialog, openModal, closeModal } from '../../actions/dialogs';
+import { createDialog, editDialog, deleteDialog, moveDialog, openModal, closeModal } from '../../actions/dialogs';
 import Table from './table';
 
 const mapStateToProps = ({ dialogs }) => ({
@@ -13,7 +13,8 @@ const mapStateToProps = ({ dialogs }) => ({
 const mapDispatchToProps = dispatch => ({
   createDialog: dialog => dispatch(createDialog(dialog)),
   editDialog: idx => dialog => dispatch(editDialog(dialog, idx)),
-  deleteDialog: id => dispatch(deleteDialog(id)),
+  deleteDialog: idx => dispatch(deleteDialog(idx)),
+  moveDialog: (fromIdx, toIdx) => dispatch(moveDialog(fromIdx, toIdx)),
   openModal: (handleSubmit, formType, formInput) => dispatch(openModal(handleSubmit, formType, formInput)),
   closeModal: () => dispatch(closeModal())
 });

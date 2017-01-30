@@ -1,5 +1,6 @@
-import { CREATE_DIALOG, EDIT_DIALOG, DELETE_DIALOG, OPEN_MODAL, CLOSE_MODAL } from '../actions/dialogs';
-import { merge } from 'lodash';
+import { CREATE_DIALOG, EDIT_DIALOG, DELETE_DIALOG, MOVE_DIALOG, OPEN_MODAL, CLOSE_MODAL } from '../actions/dialogs';
+import update from 'react/lib/update';
+import { merge, take, drop } from 'lodash';
 
 const defaultState = {
   isOpen: false,
@@ -11,7 +12,6 @@ const defaultState = {
 const modal = (state = defaultState, action) => {
   switch(action.type) {
     case OPEN_MODAL:
-      console.log(action);
       return {
         isOpen: true,
         handleSubmit: action.handleSubmit,
@@ -28,20 +28,26 @@ const modal = (state = defaultState, action) => {
 }
 
 const index = (state = [], action) => {
+  let nextState;
+  console.log(action);
   switch(action.type) {
     case CREATE_DIALOG:
-      return [...state, action.dialog];
+      nextState = state.slice(0);
+      nextState.push(action.dialog);
+      return nextState;
     case EDIT_DIALOG:
-      return [
-        ...state.slice(0, action.idx),
-        action.dialog,
-        ...state.slice(action.idx + 1)
-      ];
+      nextState = state.slice(0, action.idx);
+      nextState.push(action.dialog);
+      return nextState.concat(state.slice(action.idx + 1));
     case DELETE_DIALOG:
-     return [
-       ...state.slice(0, action.idx),
-       ...state.slice(action.idx + 1)
-     ];
+      nextState = state.slice(0, action.idx);
+     return nextState.concat(state.slice(action.idx + 1));
+    case MOVE_DIALOG:
+      const movedDialog = state[action.fromIdx];
+      nextState = state.slice(0);
+      nextState.splice(action.fromIdx, 1)
+      nextState.splice(action.toIdx, 0, movedDialog);
+      return nextState;
     default:
       return state;
   }

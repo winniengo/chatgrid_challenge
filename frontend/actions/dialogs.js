@@ -2,6 +2,7 @@
 export const CREATE_DIALOG = "CREATE_DIALOG";
 export const EDIT_DIALOG = "EDIT DIALOG";
 export const DELETE_DIALOG = "DELETE DIALOG";
+export const MOVE_DIALOG = "MOVE_DIALOG";
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
 
@@ -22,6 +23,12 @@ export const deleteDialog = idx => ({
   idx
 });
 
+export const moveDialog = (fromIdx, toIdx) => ({
+  type: MOVE_DIALOG,
+  fromIdx,
+  toIdx
+});
+
 export const openModal = (handleSubmit, formType, formInput) => ({
   type: OPEN_MODAL,
   handleSubmit,
@@ -30,5 +37,5 @@ export const openModal = (handleSubmit, formType, formInput) => ({
 });
 
 export const closeModal = () => ({
-  type: CLOSE_MODAL,
+  type: CLOSE_MODAL
 });
