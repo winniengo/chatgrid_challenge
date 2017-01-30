@@ -14,7 +14,11 @@ const Root = ({ store }) => (
 document.addEventListener('DOMContentLoaded', () => {
   const preloadedState = { // dummy files for testing
     dialogs: {
-      index: ['hey', 'whats up', 'hello']
+      index: [
+        'what are you interested in?',
+        'thanks for visiting us',
+        'how can we help you?'
+      ]
     }
   }
 
